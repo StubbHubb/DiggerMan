@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gary Goode – Digger Man | Surrey & Surrounding Areas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root {
+  --mud:   #2b1d0e;
+  --bark:  #4a2f14;
+  --amber: #d4820a;
+  --gold:  #f0a830;
+  --cream: #fdf6ec;
+  --stone: #e8ddd0;
+  --leaf:  #6b8c3e;
+  --white: #ffffff;
+  --text:  #1e1208;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--mud);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 2.5rem;
+  border-bottom: 3px solid var(--amber);
+}
+.nav-brand { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
+.nav-brand-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--gold); font-weight: 900; }
+.nav-brand-tag { font-size: 0.62rem; color: var(--stone); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+nav ul { list-style: none; display: flex; gap: 2rem; }
+nav a { color: var(--stone); text-decoration: none; font-size: 0.82rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color .2s; }
+nav a:hover { color: var(--gold); }
+.nav-cta { background: var(--amber); color: var(--white) !important; padding: 0.5rem 1.25rem; border-radius: 3px; }
+.nav-cta:hover { background: var(--gold); color: var(--mud) !important; }
+
+/* HERO */
+.hero { min-height: 100vh; display: grid; grid-template-columns: 55% 45%; padding-top: 65px; }
+.hero-left {
+  background: var(--mud);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 5rem 4rem 4rem; position: relative;
+}
+.hero-left::after {
+  content: ''; position: absolute; right: -50px; top: 0; bottom: 0; width: 100px;
+  background: var(--mud); clip-path: polygon(0 0, 0 100%, 100% 100%); z-index: 2;
+}
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.5rem; font-weight: 700;
+}
+.eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--gold); display: block; }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  font-weight: 900; line-height: 1.05; color: var(--white); margin-bottom: 0.5rem;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-byline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 700; font-style: italic; color: var(--stone);
+  border-left: 4px solid var(--amber); padding-left: 1rem;
+  margin-bottom: 2rem;
+}
+.hero-intro {
+  font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+  color: var(--stone); max-width: 430px; margin-bottom: 2.5rem;
+}
+.hero-intro strong { color: var(--gold); font-weight: 700; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 0.9rem 2rem; font-size: 0.88rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: all .25s; border: none; cursor: pointer; }
+.btn-gold { background: var(--gold); color: var(--mud); }
+.btn-gold:hover { background: var(--amber); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,130,10,0.4); }
+.btn-ghost { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.35); }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.hero-right { position: relative; overflow: hidden; }
+.hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(43,29,14,0.45) 0%, transparent 55%); }
+.hero-sticker {
+  position: absolute; bottom: 2rem; right: 1.5rem;
+  background: var(--leaf); color: var(--white);
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 0.6rem 1rem;
+  border-radius: 3px; transform: rotate(-2deg); box-shadow: 3px 3px 0 var(--mud);
+}
+
+/* GARY QUOTE */
+.quote-banner { background: var(--amber); padding: 3rem 2rem; text-align: center; position: relative; overflow: hidden; }
+.quote-banner::before {
+  content: '"'; position: absolute; left: 0; top: -40px;
+  font-family: 'Playfair Display', serif; font-size: 20rem;
+  color: rgba(0,0,0,0.07); line-height: 1; pointer-events: none;
+}
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.15rem, 2.5vw, 1.85rem);
+  font-style: italic; font-weight: 700; color: var(--mud);
+  max-width: 860px; margin: 0 auto 0.8rem; line-height: 1.5; position: relative;
+}
+.quote-attr { font-size: 0.82rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--mud); opacity: 0.65; }
+
+/* STATS */
+.stats-bar { background: var(--bark); display: grid; grid-template-columns: repeat(4,1fr); }
+.stat-item { padding: 1.8rem 1rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.07); }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--gold); line-height: 1; }
+.stat-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--stone); margin-top: 0.3rem; opacity: 0.75; }
+
+/* ABOUT */
+.about-section { background: var(--cream); padding: 6rem 2rem; }
+.about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: center; }
+.about-img-wrap { position: relative; }
+.about-img { width: 100%; height: 460px; object-fit: cover; border-radius: 4px; display: block; box-shadow: 8px 8px 0 var(--amber); }
+.about-badge {
+  position: absolute; bottom: -1.5rem; right: -1.5rem;
+  background: var(--mud); color: var(--gold);
+  font-family: 'Playfair Display', serif; font-size: 0.9rem; font-style: italic;
+  padding: 1.2rem 1.5rem; border-radius: 3px; max-width: 200px;
+  line-height: 1.45; box-shadow: 4px 4px 0 var(--amber);
+}
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; line-height: 1.1; color: var(--mud); margin-bottom: 1.5rem; }
+.section-title em { font-style: italic; color: var(--amber); }
+.about-text { font-size: 1.02rem; line-height: 1.8; color: #3a2a1a; font-weight: 300; margin-bottom: 1.1rem; }
+.about-text strong { color: var(--mud); font-weight: 700; }
+.promise-list { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.promise-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.95rem; color: #3a2a1a; line-height: 1.5; }
+.promise-list li::before {
+  content: '✓'; background: var(--leaf); color: var(--white);
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 900; flex-shrink: 0; margin-top: 1px;
+}
+
+/* TESTIMONIALS */
+.testimonial-section { background: var(--mud); padding: 6rem 2rem; }
+.testimonial-inner { max-width: 1100px; margin: 0 auto; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+.tcard { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-top: 3px solid var(--amber); border-radius: 4px; padding: 2rem; }
+.stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; }
+.tquote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.98rem; color: var(--stone); line-height: 1.7; margin-bottom: 1.2rem; }
+.tname { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); }
+.tloc { font-size: 0.72rem; color: rgba(232,221,208,0.45); margin-top: 0.2rem; }
+
+/* SERVICES */
+.services-section { background: var(--stone); padding: 6rem 2rem; }
+.services-inner { max-width: 1100px; margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px,1fr)); gap: 1.5rem; margin-top: 3rem; }
+.scard { background: var(--white); border-radius: 4px; padding: 2rem; border-bottom: 4px solid transparent; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: border-color .25s, transform .25s, box-shadow .25s; }
+.scard:hover { border-color: var(--amber); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+.scard-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.scard h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--mud); margin-bottom: 0.6rem; }
+.scard p { font-size: 0.9rem; color: #5a4a3a; line-height: 1.65; font-weight: 300; }
+.scard-extra { margin-top: 0.75rem; font-size: 0.8rem; color: var(--leaf); font-weight: 700; font-style: italic; }
+
+/* GALLERY */
+.gallery-section { background: var(--mud); padding: 6rem 2rem; }
+.gallery-inner { max-width: 1100px; margin: 0 auto; }
+.gallery-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 240px 240px; gap: 10px; margin-top: 3rem; border-radius: 4px; overflow: hidden; }
+.gallery-item { position: relative; overflow: hidden; }
+.gallery-item:first-child { grid-column: 1/3; grid-row: 1/3; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; display: block; }
+.gallery-item:hover img { transform: scale(1.06); }
+.glabel { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(43,29,14,0.88)); padding: 1.5rem 1rem 0.75rem; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--stone); font-weight: 700; opacity: 0; transition: opacity .3s; }
+.gallery-item:hover .glabel { opacity: 1; }
+.gallery-note { margin-top: 1.25rem; color: rgba(232,221,208,0.4); font-size: 0.8rem; font-style: italic; text-align: center; }
+
+/* PRICING */
+.pricing-section { background: var(--cream); padding: 6rem 2rem; }
+.pricing-inner { max-width: 1100px; margin: 0 auto; }
+.pricing-note { background: var(--white); border-left: 5px solid var(--amber); padding: 1.25rem 1.5rem; border-radius: 0 4px 4px 0; font-size: 0.92rem; line-height: 1.7; color: #4a3a2a; margin-bottom: 2.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+.pricing-note strong { color: var(--mud); }
+.ptable { width: 100%; border-collapse: collapse; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-radius: 6px; overflow: hidden; }
+.ptable thead tr { background: var(--mud); }
+.ptable th { font-size: 0.76rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--stone); padding: 1.1rem 1.25rem; text-align: left; font-weight: 700; }
+.ptable td { padding: 0.95rem 1.25rem; font-size: 0.92rem; color: #3a2a1a; border-bottom: 1px solid rgba(0,0,0,0.06); background: var(--white); }
+.ptable tr:nth-child(even) td { background: #faf5ee; }
+.ptable tr:hover td { background: #fff8ee; }
+.pamt { font-weight: 700; color: var(--amber); font-size: 1rem; }
+.pcat td { background: var(--bark) !important; color: var(--gold) !important; font-size: 0.73rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; padding: 0.55rem 1.25rem; }
+.ptag { display: inline-block; background: #e8f5e9; color: var(--leaf); font-size: 0.66rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 0.15rem 0.45rem; border-radius: 20px; margin-left: 0.3rem; vertical-align: middle; }
+
+/* CONTACT */
+.contact-section { background: var(--bark); padding: 6rem 2rem; }
+.contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
+.contact-left h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--white); line-height: 1.1; margin-bottom: 0.8rem; }
+.contact-left h2 em { font-style: italic; color: var(--gold); }
+.contact-intro { font-size: 1rem; color: var(--stone); line-height: 1.75; font-weight: 300; margin-bottom: 2.5rem; max-width: 440px; }
+.contact-intro strong { color: var(--gold); font-weight: 700; }
+.cblock { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.75rem; }
+.cicon { width: 46px; height: 46px; border-radius: 50%; background: var(--amber); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.ctext strong { display: block; font-size: 0.68rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem; font-weight: 700; }
+.ctext a, .ctext p { color: var(--white); text-decoration: none; font-size: 1.1rem; font-weight: 600; line-height: 1.4; }
+.ctext a:hover { color: var(--gold); }
+.ctext .sub { font-size: 0.8rem; color: rgba(232,221,208,0.5); font-weight: 300; margin-top: 0.15rem; display: block; }
+.coverage { margin-top: 2rem; }
+.coverage h4 { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 0.75rem; }
+.ctags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.ctag { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.11); color: var(--stone); font-size: 0.78rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 20px; }
+
+/* QR */
+.qr-panel { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+.qr-box { background: var(--white); padding: 1.5rem; border-radius: 6px; box-shadow: 6px 6px 0 var(--amber); }
+#qrcode canvas, #qrcode img { display: block; }
+.qr-caption { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--stone); text-align: center; font-weight: 700; }
+.qr-phone { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--gold); text-decoration: none; text-align: center; display: block; line-height: 1; }
+.qr-phone:hover { color: var(--white); }
+.qr-free { background: var(--leaf); color: var(--white); font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-align: center; padding: 0.6rem 1.5rem; border-radius: 3px; }
+.qr-personal { color: rgba(232,221,208,0.45); font-size: 0.78rem; text-align: center; font-style: italic; max-width: 200px; line-height: 1.5; }
+
+/* FOOTER */
+footer { background: var(--mud); border-top: 3px solid var(--amber); padding: 2.5rem 2rem; text-align: center; }
+.footer-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; font-style: italic; color: var(--gold); margin-bottom: 0.4rem; }
+.footer-sub { font-size: 0.78rem; color: rgba(232,221,208,0.45); letter-spacing: 1px; }
+.footer-copy { margin-top: 1rem; font-size: 0.72rem; color: rgba(232,221,208,0.25); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-left::after { display: none; }
+  .hero-left { padding: 5rem 1.5rem 3rem; }
+  .hero-right { height: 55vw; min-height: 260px; }
+  .stats-bar { grid-template-columns: repeat(2,1fr); }
+  .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-img { height: 280px; }
+  .about-badge { display: none; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; height: auto; }
+  .gallery-item { height: 200px; }
+  .gallery-item:first-child { grid-column: 1/3; grid-row: auto; height: 240px; }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  nav ul { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <span class="nav-brand-name">Gary Goode</span>
+    <span class="nav-brand-tag">Digger Man · Surrey</span>
+  </a>
+  <ul>
+    <li><a href="#about">About Gary</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact" class="nav-cta">📞 Call Gary</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <span class="eyebrow">Surrey & Surrounding Areas</span>
+    <h1>Your Local<br><em>Digger Man.</em></h1>
+    <p class="hero-byline">Gary Goode – here to help</p>
+    <p class="hero-intro">
+      I'm not a big company. I'm <strong>just Gary</strong> — one man, one digger, and 40 years of honest hard graft behind me.
+      I turn up when I say I will, I do the job right, and I genuinely <strong>won't leave until you're happy</strong>.
+      If there's something I can help with beyond the job — I will.
+    </p>
+    <div class="hero-btns">
+      <a href="tel:07455103606" class="btn btn-gold">📞 Call Gary: 07455 103606</a>
+      <a href="#about" class="btn btn-ghost">Meet Gary</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-photo"
+      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80"
+      alt="Mini digger on a small residential job in Surrey"
+    />
+    <div class="hero-overlay"></div>
+    <div class="hero-sticker">📍 Based in Guildford, Surrey</div>
+  </div>
+</section>
+
+<!-- GARY QUOTE BANNER -->
+<div class="quote-banner">
+  <p class="quote-text">"I've been doing this for 40 years and the most important part of any job has never changed — leaving the customer happy. Even if that means going a little bit further than what was agreed."</p>
+  <p class="quote-attr">— Gary Goode, Digger Man</p>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">40+</div>
+    <div class="stat-label">Years Experience</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">>10,000</div>
+    <div class="stat-label">Jobs Completed</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">1</div>
+    <div class="stat-label">Man. One Digger. No Fuss.</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Owner Operated</div>
+  </div>
+</div>
+
+<!-- ABOUT GARY -->
+<section class="about-section" id="about">
+  <div class="about-inner">
+    <div class="about-img-wrap">
+      <img class="about-img"
+        src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=80"
+        alt="Groundwork being completed on a residential property"
+      />
+      <div class="about-badge">"I treat every job like it's my own garden."</div>
+    </div>
+    <div>
+      <p class="eyebrow">Who is Gary?</p>
+      <h2 class="section-title">A <em>proper</em> local tradesman<br>you can actually trust</h2>
+      <p class="about-text">
+        I started operating diggers when I was barely out of school — that's over 40 years ago now. I've done it all: drains, foundations, demolition, clearance, driveways, fencing, gritting icy roads at 5am. Over 10,000 jobs across Surrey and beyond.
+      </p>
+      <p class="about-text">
+        <strong>What sets me apart isn't the machinery — it's the attitude.</strong> I answer my phone. I show up on time. I explain what I'm doing and why. If I spot something that needs doing while I'm there — I'll mention it, and often just sort it out.
+      </p>
+      <p class="about-text">
+        Most of my work comes from neighbours recommending me to neighbours. That tells you everything. When someone calls me because their friend said "get Gary" — I take that seriously every single time.
+      </p>
+      <ul class="promise-list">
+        <li>I always answer my phone — or call you straight back within the hour</li>
+        <li>No hidden costs — you'll know the full price before I lift a finger</li>
+        <li>I'll help out with small extras that aren't "part of the job"</li>
+        <li>I leave your site clean and tidy every single day, without being asked</li>
+        <li>I cover all of Surrey and will happily travel further if you need me</li>
+        <li>No job is too small — I genuinely mean that</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonial-section">
+  <div class="testimonial-inner">
+    <p class="eyebrow" style="color:var(--gold);">What People Say About Gary</p>
+    <h2 class="section-title" style="color:var(--white);">Straight from the <em>neighbours</em></h2>
+    <div class="testimonials-grid">
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p class="tquote">"Gary turned up the next morning, sorted our drainage problem in a few hours, then helped us shift some old paving slabs that weren't even part of the job. Absolute gem of a man. Won't use anyone else."</p>
+        <div class="tname">Sarah M.</div>
+        <div class="tloc">Guildford, Surrey</div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p class="tquote">"Two other companies quoted and never showed up. Gary came the same day, gave us a fair price, and had the old garage demolished and cleared by lunchtime. Tidied up better than he found it. Brilliant."</p>
+        <div class="tname">Dave & Linda T.</div>
+        <div class="tloc">Woking, Surrey</div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p class="tquote">"Called Gary on a frosty Monday morning, worried about our yard. He was there within the hour with his gritter. Didn't make a fuss, just sorted it. That's Gary all over — reliable, friendly, and fair."</p>
+        <div class="tname">Pete K.</div>
+        <div class="tloc">Dorking, Surrey</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-inner">
+    <p class="eyebrow">What Gary Can Do For You</p>
+    <h2 class="section-title">Services — <em>big and small</em></h2>
+    <div class="services-grid">
+      <div class="scard">
+        <span class="scard-icon">🚜</span>
+        <h3>Excavation & Digging</h3>
+        <p>Trenches, foundations, drainage runs, pond digging, and general earthworks. Compact machinery for tight gardens — Gary gets into spots others simply can't reach.</p>
+        <p class="scard-extra">✦ Happy to dig by hand for really tight spaces</p>
+      </div>
+      <div class="scard">
+        <span class="scard-icon">🏚️</span>
+        <h3>Demolition</h3>
+        <p>Garages, sheds, outbuildings, old walls, patios, concrete. Safe, properly assessed, and fully cleared away. Gary leaves things tidier than he found them — always.</p>
+        <p class="scard-extra">✦ Rubble disposal included — no skips for you to organise</p>
+      </div>
+      <div class="scard">
+        <span class="scard-icon">🧹</span>
+        <h3>Clearance</h3>
+        <p>Land clearance, overgrown gardens, site clearance after build work. No mess left behind. If there's something you want to keep, Gary will set it aside without being asked.</p>
+        <p class="scard-extra">✦ Happy to sort what's rubbish and what's not</p>
+      </div>
+      <div class="scard">
+        <span class="scard-icon">🚛</span>
+        <h3>Building Material Transport</h3>
+        <p>Aggregate, soil, hardcore, sand, rubble — collected or delivered. Tipper trailer on hand. Gary can even source materials locally and save you the legwork.</p>
+        <p class="scard-extra">✦ Saves you arranging separate deliveries</p>
+      </div>
+      <div class="scard">
+        <span class="scard-icon">🔩</span>
+        <h3>Fence Installation</h3>
+        <p>Closeboard, post & rail, agricultural and security fencing. Machine-driven posts for a solid, lasting result in any ground. Gary advises on the best type for your situation for free.</p>
+        <p class="scard-extra">✦ Free advice on materials and fence type</p>
+      </div>
+      <div class="scard">
+        <span class="scard-icon">🧂</span>
+        <h3>Road Gritting</h3>
+        <p>Private roads, driveways, car parks, commercial yards — kept safe when it freezes. Gary offers early morning callouts so you can get out when you need to.</p>
+        <p class="scard-extra">✦ There before you need to leave the house</p>
+      </div>
+      <div class="scard">
+        <span class="scard-icon">🪨</span>
+        <h3>Hardcore & Levelling</h3>
+        <p>Spreading, compacting and levelling for driveways, yards, and building bases. Done once, done right — no corners cut, no sinking later.</p>
+        <p class="scard-extra">✦ Proper compaction — no shortcuts</p>
+      </div>
+      <div class="scard">
+        <span class="scard-icon">💧</span>
+        <h3>Drainage & Ditching</h3>
+        <p>French drains, soakaways, ditch clearing and re-profiling. Gary has seen every type of waterlogging problem over 40 years — and knows how to fix them properly.</p>
+        <p class="scard-extra">✦ Free assessment of what's causing the problem</p>
+      </div>
+      <div class="scard">
+        <span class="scard-icon">🌿</span>
+        <h3>Topsoil & Turfing Prep</h3>
+        <p>Strip and remove topsoil, or deliver and spread fresh topsoil ready for seeding or turfing. Gardens, paddocks, playing areas — Gary covers it all.</p>
+        <p class="scard-extra">✦ Can recommend a good turfing contact too</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="gallery-inner">
+    <p class="eyebrow" style="color:var(--gold);">Recent Jobs</p>
+    <h2 class="section-title" style="color:var(--white);">A few jobs from <em>around Surrey</em></h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1590496793929-36417d3117de?w=800&q=80"
+          alt="Residential garden excavation work" />
+        <div class="glabel">Garden excavation · Guildford</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&q=80"
+          alt="Small digger on a residential job" />
+        <div class="glabel">Drainage trench · Woking</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80"
+          alt="Site clearance and groundwork" />
+        <div class="glabel">Site clearance · Dorking</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1592595896551-12b371d546d5?w=500&q=80"
+          alt="Driveway hardcore completed" />
+        <div class="glabel">Driveway hardcore · Leatherhead</div>
+      </div>
+    </div>
+    <p class="gallery-note">📸 Gary's own job photos coming soon — these are placeholders</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="pricing-inner">
+    <p class="eyebrow">No Hidden Costs. Ever.</p>
+    <h2 class="section-title">Honest <em>Guide Prices</em></h2>
+    <div class="pricing-note">
+      <strong>Gary's promise on pricing:</strong> You'll always know the full cost before a single bit of soil is moved. These are guide prices — every job is different and Gary will always give you a free, no-obligation quote first. No call-out charge. No VAT (sole trader). No nasty surprises. If it ends up taking less time than expected, Gary will charge less.
+    </div>
+    <table class="ptable">
+      <thead><tr><th>Service</th><th>Unit</th><th>Guide Price</th></tr></thead>
+      <tbody>
+        <tr class="pcat"><td colspan="3">🚜 Excavation & Earthworks</td></tr>
+        <tr><td>Machine hire (Gary included)</td><td>Per day</td><td class="pamt">£450 – £550</td></tr>
+        <tr><td>Machine hire (Gary included)</td><td>Per half day</td><td class="pamt">£280 – £320</td></tr>
+        <tr><td>Trench digging</td><td>Per metre</td><td class="pamt">£15 – £25</td></tr>
+        <tr><td>Foundation excavation</td><td>Per m³</td><td class="pamt">£40 – £65</td></tr>
+
+        <tr class="pcat"><td colspan="3">🏚️ Demolition</td></tr>
+        <tr><td>Garage / outbuilding demolition</td><td>Per structure</td><td class="pamt">£500 – £1,200 <span class="ptag">clearance incl.</span></td></tr>
+        <tr><td>Garden wall / patio break-up</td><td>Per day</td><td class="pamt">£350 – £500</td></tr>
+        <tr><td>Concrete slab removal</td><td>Per m²</td><td class="pamt">£25 – £45</td></tr>
+
+        <tr class="pcat"><td colspan="3">🧹 Clearance</td></tr>
+        <tr><td>Garden / land clearance</td><td>Per day</td><td class="pamt">£400 – £550</td></tr>
+        <tr><td>Rubble / waste removal</td><td>Per load</td><td class="pamt">£150 – £250</td></tr>
+
+        <tr class="pcat"><td colspan="3">🚛 Material Transport</td></tr>
+        <tr><td>Aggregate / soil delivery or removal</td><td>Per load</td><td class="pamt">£120 – £200</td></tr>
+        <tr><td>Muck away (excavated material)</td><td>Per load</td><td class="pamt">£140 – £220</td></tr>
+
+        <tr class="pcat"><td colspan="3">🔩 Fencing</td></tr>
+        <tr><td>Closeboard panel installation</td><td>Per panel</td><td class="pamt">£80 – £130 <span class="ptag">materials extra</span></td></tr>
+        <tr><td>Agricultural / post & wire fencing</td><td>Per 10m run</td><td class="pamt">£150 – £280</td></tr>
+        <tr><td>Machine post driving</td><td>Per post</td><td class="pamt">£20 – £35</td></tr>
+
+        <tr class="pcat"><td colspan="3">🧂 Road Gritting</td></tr>
+        <tr><td>Private road / driveway gritting</td><td>Per visit</td><td class="pamt">£60 – £120</td></tr>
+        <tr><td>Car park / commercial yard</td><td>Per visit</td><td class="pamt">£100 – £250</td></tr>
+        <tr><td>Seasonal gritting contract</td><td>Per season</td><td class="pamt">POA</td></tr>
+
+        <tr class="pcat"><td colspan="3">🪨 Hardcore, Drainage & More</td></tr>
+        <tr><td>Hardcore spreading & compacting</td><td>Per day</td><td class="pamt">£400 – £500</td></tr>
+        <tr><td>French drain / soakaway installation</td><td>Per metre</td><td class="pamt">£35 – £60</td></tr>
+        <tr><td>Ditch clearing / re-profiling</td><td>Per metre</td><td class="pamt">£20 – £40</td></tr>
+        <tr><td>Topsoil spreading</td><td>Per day</td><td class="pamt">£350 – £480</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <p class="eyebrow" style="color:var(--gold);">Get In Touch</p>
+      <h2><em>Just give Gary a ring.</em></h2>
+      <p class="contact-intro">
+        No web forms. No chatbots. No waiting three days for an email reply.
+        <strong>Just call or text Gary directly</strong> and he'll get back to you — usually within the hour.
+        Free advice, free quotes, absolutely no pressure.
+      </p>
+
+      <div class="cblock">
+        <div class="cicon">📞</div>
+        <div class="ctext">
+          <strong>Call or Text Gary Direct</strong>
+          <a href="tel:07455103606">07455 103606</a>
+          <span class="sub">Mon–Sat 7am–6pm · Emergency callouts welcome</span>
+        </div>
+      </div>
+
+      <div class="cblock">
+        <div class="cicon">📧</div>
+        <div class="ctext">
+          <strong>Email</strong>
+          <a href="mailto:gary@garygoode-digger.co.uk">gary@garygoode-digger.co.uk</a>
+          <span class="sub">Gary replies the same day</span>
+        </div>
+      </div>
+
+      <div class="cblock">
+        <div class="cicon">📍</div>
+        <div class="ctext">
+          <strong>Based in</strong>
+          <p>Guildford, Surrey</p>
+          <span class="sub">Covering all of Surrey — happy to travel further, just ask</span>
+        </div>
+      </div>
+
+      <div class="cblock">
+        <div class="cicon">🕐</div>
+        <div class="ctext">
+          <strong>Hours</strong>
+          <p>Mon–Sat: 7:00am – 6:00pm</p>
+          <span class="sub">Early starts and emergency callouts available</span>
+        </div>
+      </div>
+
+      <div class="coverage">
+        <h4>Areas Gary Covers</h4>
+        <div class="ctags">
+          <span class="ctag">Guildford</span>
+          <span class="ctag">Woking</span>
+          <span class="ctag">Reigate</span>
+          <span class="ctag">Dorking</span>
+          <span class="ctag">Leatherhead</span>
+          <span class="ctag">Epsom</span>
+          <span class="ctag">Farnham</span>
+          <span class="ctag">Godalming</span>
+          <span class="ctag">Haslemere</span>
+          <span class="ctag">Cranleigh</span>
+          <span class="ctag">Redhill</span>
+          <span class="ctag">Banstead</span>
+          <span class="ctag">+ Willing to Travel</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- QR -->
+    <div class="qr-panel">
+      <div class="qr-box">
+        <div id="qrcode"></div>
+      </div>
+      <p class="qr-caption">Scan to call Gary</p>
+      <a href="tel:07455103606" class="qr-phone">07455 103606</a>
+      <p class="qr-free">Free quotes · No call-out charge</p>
+      <p class="qr-personal">"Call me anytime — if I can't talk, I'll ring you straight back."</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Gary Goode — Digger Man</div>
+  <div class="footer-sub">Sole Trader · Based in Guildford, Surrey · 07455 103606 · Covering Surrey & Surrounding Counties</div>
+  <div class="footer-copy">© 2025 Gary Goode. All rights reserved.</div>
+</footer>
+
+<script>
+  new QRCode(document.getElementById("qrcode"), {
+    text: "tel:07455103606",
+    width: 180,
+    height: 180,
+    colorDark: "#2b1d0e",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+</script>
+
+</body>
+</html>
