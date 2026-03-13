@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Gallery 2 — Fence post installation -->
+<svg preserveaspectratio="xMidYMid slice" style="width:100%;height:100%;display:block;" viewbox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+<!-- Sky -->
+<rect fill="#7a9fb8" height="280" width="400"></rect>
+<!-- Ground -->
+<rect fill="#5a3e28" height="95" width="400" y="185"></rect>
+<rect fill="#6b4a2a" height="12" width="400" y="178"></rect>
+<!-- Grass -->
+<ellipse cx="200" cy="182" fill="#5a8a3a" rx="200" ry="10"></ellipse>
+<!-- Fence posts -->
+<rect fill="#8B6914" height="88" rx="3" width="18" x="30" y="110"></rect>
+<rect fill="#8B6914" height="88" rx="3" width="18" x="105" y="105"></rect>
+<rect fill="#8B6914" height="88" rx="3" width="18" x="180" y="108"></rect>
+<rect fill="#8B6914" height="88" rx="3" width="18" x="255" y="106"></rect>
+<rect fill="#8B6914" height="88" rx="3" width="18" x="330" y="109"></rect>
+<!-- Post tops -->
+<rect fill="#a07820" height="6" rx="2" width="20" x="29" y="107"></rect>
+<rect fill="#a07820" height="6" rx="2" width="20" x="104" y="102"></rect>
+<rect fill="#a07820" height="6" rx="2" width="20" x="179" y="105"></rect>
+<rect fill="#a07820" height="6" rx="2" width="20" x="254" y="103"></rect>
+<rect fill="#a07820" height="6" rx="2" width="20" x="329" y="106"></rect>
+<!-- Rails -->
+<rect fill="#a07820" height="10" rx="3" width="320" x="30" y="128"></rect>
+<rect fill="#a07820" height="10" rx="3" width="320" x="30" y="158"></rect>
+<!-- Fence boards between posts -->
+<rect fill="#c8952a" height="72" rx="1" width="10" x="52" y="112"></rect>
+<rect fill="#b88020" height="72" rx="1" width="10" x="65" y="112"></rect>
+<rect fill="#c8952a" height="72" rx="1" width="10" x="78" y="112"></rect>
+<rect fill="#c8952a" height="72" rx="1" width="10" x="128" y="107"></rect>
+<rect fill="#b88020" height="72" rx="1" width="10" x="141" y="107"></rect>
+<rect fill="#c8952a" height="72" rx="1" width="10" x="154" y="107"></rect>
+<rect fill="#c8952a" height="72" rx="1" width="10" x="202" y="110"></rect>
+<rect fill="#b88020" height="72" rx="1" width="10" x="215" y="110"></rect>
+<rect fill="#c8952a" height="72" rx="1" width="10" x="228" y="110"></rect>
+<rect fill="#c8952a" height="72" rx="1" width="10" x="277" y="108"></rect>
+<rect fill="#b88020" height="72" rx="1" width="10" x="290" y="108"></rect>
+<rect fill="#c8952a" height="72" rx="1" width="10" x="303" y="108"></rect>
+<!-- Worker installing last post -->
+<!-- Body -->
+<rect fill="#3a5a8a" height="35" rx="4" width="22" x="348" y="148"></rect>
+<!-- Head -->
+<circle cx="359" cy="140" fill="#d4956a" r="12"></circle>
+<!-- Hard hat -->
+<ellipse cx="359" cy="133" fill="#e8900c" rx="13" ry="5"></ellipse>
+<rect fill="#e8900c" height="5" rx="2" width="18" x="350" y="129"></rect>
+<!-- Arms holding post driver -->
+<line stroke="#d4956a" stroke-linecap="round" stroke-width="5" x1="348" x2="335" y1="158" y2="138"></line>
+<line stroke="#d4956a" stroke-linecap="round" stroke-width="5" x1="370" x2="358" y1="158" y2="136"></line>
+<!-- Post driver tool -->
+<rect fill="#555" height="28" rx="3" width="12" x="351" y="118"></rect>
+<rect fill="#333" height="8" rx="2" width="18" x="348" y="113"></rect>
+<!-- Legs -->
+<rect fill="#2a3a6a" height="18" rx="2" width="8" x="350" y="180"></rect>
+<rect fill="#2a3a6a" height="18" rx="2" width="8" x="362" y="180"></rect>
+<!-- Boots -->
+<rect fill="#1a1209" height="6" rx="2" width="11" x="348" y="196"></rect>
+<rect fill="#1a1209" height="6" rx="2" width="11" x="360" y="196"></rect>
+<!-- Amber overlay -->
+<rect fill="rgba(232,144,12,0.05)" height="280" width="400"></rect>
+</svg>
